@@ -58,32 +58,13 @@ Developed by: NIRAUNJANA GAYATHRI G R
 
 RegisterNumber:  22008369
 
-module SIPO(SI,Clk,PO);
-input SI,Clk;
-output[0:7]PO;
-reg[0:7]temp;
-always@(posedge Clk)
-begin
-temp = {temp[0:6],SI};
-end
-assign PO = temp;
-endmodule
+![image](https://user-images.githubusercontent.com/119395610/213848722-17aa8afa-7597-4e51-a106-d3fa275e9ca5.png)
+
+![image](https://user-images.githubusercontent.com/119395610/213848740-dfae6562-c15c-4427-b80a-5a3484a4f48d.png)
 
 
-module PISO(Clk, Parallel_In,load, Serial_Out);
-input Clk,load;
-input [3:0]Parallel_In;
-output reg Serial_Out;
-reg [3:0]tmp;
-always @(posedge Clk)
-begin
-if(load)
-tmp<=Parallel_In;
-else
-begin
-Serial_Out<=tmp[3];
-tmp<={tmp[2:0],1'b0};
-endmodule
+
+
 */
 
 
