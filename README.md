@@ -40,16 +40,50 @@ The logic circuit given below shows a parallel-in-parallel-out shift register. T
 FIGURE-04
 A Parallel in Parallel out (PIPO) shift register is used as a temporary storage device and like SISO Shift register it acts as a delay element.
 
-### Procedure
-/* write all the steps invloved */
+### Procedure:
+
+1.Use quartus software and import required modules. 
+2.Assign inputs and outputs for shift registers. 
+3.Assign logic for input to give output at positive edge.
+4.Perform opertaions and produce rtl circuit. 
+5.End the module.
 
 
 
 ### PROGRAM 
 /*
-Program for  Implementation-of Shift-registers-using-verilog-
-Developed by: 
-RegisterNumber:  
+Program for  Implementation-of Shift-registers-using-verilog
+
+Developed by: NIRAUNJANA GAYATHRI G R
+
+RegisterNumber:  22008369
+
+module SIPO(SI,Clk,PO);
+input SI,Clk;
+output[0:7]PO;
+reg[0:7]temp;
+always@(posedge Clk)
+begin
+temp = {temp[0:6],SI};
+end
+assign PO = temp;
+endmodule
+
+
+module PISO(Clk, Parallel_In,load, Serial_Out);
+input Clk,load;
+input [3:0]Parallel_In;
+output reg Serial_Out;
+reg [3:0]tmp;
+always @(posedge Clk)
+begin
+if(load)
+tmp<=Parallel_In;
+else
+begin
+Serial_Out<=tmp[3];
+tmp<={tmp[2:0],1'b0};
+endmodule
 */
 
 
@@ -57,7 +91,11 @@ RegisterNumber:
 
 
 
-### RTL LOGIC  REGISTERS   
+### RTL LOGIC  REGISTERS   :
+
+![image](https://user-images.githubusercontent.com/119395610/213848153-0f819266-ee51-4e3b-a666-dafefff7d307.png)
+![image](https://user-images.githubusercontent.com/119395610/213848167-122a1a10-9a8c-4161-a34e-1931d3376a09.png)
+![image](https://user-images.githubusercontent.com/119395610/213848183-e4692444-1fc2-4dc9-8d12-4694684e21cd.png)
 
 
 
@@ -67,7 +105,9 @@ RegisterNumber:
 
 
 
-### TIMING DIGRAMS FOR SHIFT REGISTERS
+### TIMING DIGRAMS FOR SHIFT REGISTERS:
+
+![image](https://user-images.githubusercontent.com/119395610/213848196-285b6336-56fa-4969-835e-2a111369c5e6.png)
 
 
 
@@ -75,5 +115,6 @@ RegisterNumber:
 
 
 
+### RESULTS :
+Thus, PISO , PIPO, SIPO are implemented using verilog and their functionality using their functional tables is validated.
 
-### RESULTS 
